@@ -2,7 +2,7 @@ using ToDoApi;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ToDoDbContext>(opt => opt.UseMySql(ServerVersion.AutoDetect("server=localhost;user=root;password=214221848;database=tododb")));
+builder.Services.AddDbContext<ToDoDbContext>(opt => opt.UseMySql(ServerVersion.AutoDetect(builder.Configuration["ToDoDB"])));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
