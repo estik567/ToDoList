@@ -21,12 +21,12 @@ app.MapGet("/items", async (ToDoDbContext context) => { return await context.Ite
 
 app.MapGet("/",()=>"ToDoAPI is running");
 
-app.MapPost("/items", async (ToDoDbContext context, Items item) =>
+app.MapPost("/items", async (ToDoDbContext context, Item item) =>
 {
-    EntityEntry<Items> itemToReturn = context.Items.Add(item); await context.SaveChangesAsync();
+    EntityEntry<Item> itemToReturn = context.Items.Add(item); await context.SaveChangesAsync();
     return itemToReturn.Entity;
 });
-app.MapPut("/items", async (ToDoDbContext context, Items item) =>
+app.MapPut("/items", async (ToDoDbContext context, Item item) =>
 {
     var entity = context.Items.Update(item);
     await context.SaveChangesAsync();
